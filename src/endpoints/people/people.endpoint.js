@@ -2,6 +2,7 @@
 const { app } = require('../../index');
 const { bodyParser } = require('../../middleware/body-parser');
 const { getPerson, getAllPeople, createPerson, updatePerson, deletePerson } = require('./people');
+const { HttpError } = require('@celeri/http-error');
 
 app.get('/people')
 	.use(({ req, res }) => {
@@ -14,13 +15,7 @@ app.get('/people/:id')
 		const id = parseFloat(req.params.id);
 
 		if (! id) {
-			res.statusCode = 400;
-			res.end(JSON.stringify({
-				errors: [
-					{ message: `Person id "${id}" is invalid` }
-				]
-			}));
-			return;
+			throw new HttpError(400, `Person id "${id}" is invalid`);
 		}
 
 		const person = getPerson(id);
@@ -31,12 +26,7 @@ app.get('/people/:id')
 		}
 
 		else {
-			res.statusCode = 404;
-			res.end(JSON.stringify({
-				errors: [
-					{ message: `Person with id=${req.params.id} not found` }
-				]
-			}));
+			throw new HttpError(404, `Person with id=${req.params.id} not found`);
 		}
 	});
 
@@ -60,13 +50,7 @@ app.patch('/people/:id')
 		const id = parseFloat(req.params.id);
 
 		if (! id) {
-			res.statusCode = 400;
-			res.end(JSON.stringify({
-				errors: [
-					{ message: `Person id "${id}" is invalid` }
-				]
-			}));
-			return;
+			throw new HttpError(400, `Person id "${id}" is invalid`);
 		}
 
 		const updatedPerson = updatePerson(id, req.body);
@@ -77,12 +61,7 @@ app.patch('/people/:id')
 		}
 
 		else {
-			res.statusCode = 404;
-			res.end(JSON.stringify({
-				errors: [
-					{ message: `Person with id=${req.params.id} not found` }
-				]
-			}));
+			throw new HttpError(404, `Person with id=${req.params.id} not found`);
 		}
 	});
 
@@ -91,13 +70,7 @@ app.delete('/people/:id')
 		const id = parseFloat(req.params.id);
 
 		if (! id) {
-			res.statusCode = 400;
-			res.end(JSON.stringify({
-				errors: [
-					{ message: `Person id "${id}" is invalid` }
-				]
-			}));
-			return;
+			throw new HttpError(400, `Person id "${id}" is invalid`);
 		}
 
 		const deleted = deletePerson(id);
@@ -108,11 +81,6 @@ app.delete('/people/:id')
 		}
 
 		else {
-			res.statusCode = 404;
-			res.end(JSON.stringify({
-				errors: [
-					{ message: `Person with id=${req.params.id} not found` }
-				]
-			}));
+			throw new HttpError(404, `Person with id=${req.params.id} not found`);
 		}
 	});
