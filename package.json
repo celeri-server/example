@@ -1,0 +1,29 @@
+{
+  "name": "@celeri/example",
+  "version": "1.0.0",
+  "description": "An example server project using Celeri",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/celeri-server/example-project.git"
+  },
+  "keywords": [
+    "celeri",
+    "example",
+    "demo"
+  ],
+  "author": "James Brumond <james@jbrumond.me> (http://www.jbrumond.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/celeri-server/example-project/issues"
+  },
+  "homepage": "https://github.com/celeri-server/example-project#readme",
+  "dependencies": {
+    "@celeri/body-parser": "^1.0.3",
+    "@celeri/http-error": "^1.0.3",
+    "@celeri/http-server": "^1.0.4"
+  }
+}
