@@ -23,14 +23,13 @@
   "homepage": "https://github.com/celeri-server/example-project#readme",
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-config-celeri": "^1.0.0",
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1"
+    "eslint-config-celeri": "^1.0.0"
   },
   "dependencies": {
+    "@celeri/router": "^1.1.0",
     "@celeri/body-parser": "^1.0.3",
     "@celeri/http-error": "^1.0.3",
-    "@celeri/http-server": "^1.0.4",
+    "@celeri/http-server": "^1.1.0",
     "postinstall-build": "^3.0.1"
   }
 }
